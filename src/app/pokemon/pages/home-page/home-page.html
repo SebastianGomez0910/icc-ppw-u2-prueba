@@ -1,0 +1,34 @@
+    <div class="min-h-screen bg-gray-50 p-6">
+    <header class="flex justify-between items-center mb-6">
+        <h1 class="text-3xl font-bold text-red-600">pokemon</h1>
+        <button (click)="logout()" class="bg-gray-800 text-white px-4 py-2 rounded">Salir</button>
+    </header>
+
+    <div class="flex gap-4 mb-6 justify-center">
+        <button (click)="prevPage()" [disabled]="offset() === 0" class="px-4 py-2 bg-white border rounded disabled:opacity-50">
+        Anterior
+        </button>
+        <button (click)="nextPage()" class="px-4 py-2 bg-red-600 text-white rounded">
+        Siguiente
+        </button>
+    </div>
+
+    <h2 class="text-2xl font-bold text-red-950">Total de Pokemones: {{ totalPokemons() }}</h2>
+
+
+    @if (pokemonResource.isLoading()) {
+        <p class="text-center">Cargando...</p>
+    }
+
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        @for (poke of pokemonList(); track poke.name) {
+        <article class="bg-white p-4 rounded shadow hover:shadow-lg transition text-center border">
+            <img [src]="getImgUrl(poke.url)" class="w-24 h-24 mx-auto">
+            <h3 class="font-bold capitalize text-lg">{{ poke.name }}</h3>
+            <a [routerLink]="['/pokemon', getPokemonId(poke.url)]" class="text-blue-600 underline mt-2 block">
+            Ver Detalles
+            </a>
+        </article>
+        }
+    </section>
+    </div>

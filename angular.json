@@ -11,6 +11,8 @@
       "prefix": "app",
       "architect": {
         "build": {
+          "baseHref": "/icc-ppw-u2-prueba/",
+          "deployUrl": "/icc-ppw-u2-prueba/",
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
