@@ -10,12 +10,10 @@ export class PokemonService {
 
   constructor(private http: HttpClient) {}
 
-  // Listado paginado
   getPokemonList(offset: number, limit: number): Observable<any> {
     return this.http.get<any>(`${this.base}/pokemon?offset=${offset}&limit=${limit}`);
   }
 
-  // Detalle por id
   getPokemonDetail(id: string): Observable<any> {
     return this.http.get<any>(`${this.base}/pokemon/${id}`);
   }
